@@ -15,7 +15,7 @@
     <description>keycloack-jwt</description>
     <properties>
         <java.version>17</java.version>
-
+        <infinispan.version>13.0.8.Final</infinispan.version>
     </properties>
     <dependencies>
         <dependency>
@@ -58,6 +58,28 @@
             <artifactId>keycloak-dependencies-server-all</artifactId>
             <version>18.0.2</version>
             <type>pom</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- config properties processor -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
         </dependency>
 
 
@@ -79,8 +101,6 @@
             </plugin>
         </plugins>
     </build>
-    <properties>
-        <infinispan.version>13.0.8.Final</infinispan.version>
-    </properties>
+
 
 </project>
